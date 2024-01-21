@@ -8,7 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateStudentRequest {
-    @NotNull(message = "Id is needed")
+
+    @NotNull(message = "Id is mandatory")
     private Long id;
     private String name;
     private String code;

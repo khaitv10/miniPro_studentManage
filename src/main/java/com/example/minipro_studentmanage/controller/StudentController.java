@@ -24,7 +24,6 @@ public class StudentController {
 
     private final StudentService studentService;
 
-
     @PostMapping(value = "/add")
     public ResponseEntity<ApiResponse<StudentResponse>> addStudent(@Validated @RequestBody CreateStudentRequest request) {
         log.info("Has request add student with data: {}", request.toString());
@@ -34,13 +33,13 @@ public class StudentController {
     }
 
 
-//    @GetMapping(value = "/all")
-//    public ResponseEntity<ApiResponse<PageStudentResponse>> getPage(@ParameterObject GetPageStudentRequest request) {
-//        log.info("Has request get page student with data: {}", request.toString());
-//        ApiResponse<PageStudentResponse> response = studentService.getPage(request);
-//        log.info("Has response get page student with data: {}", response.toString());
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
+    @GetMapping(value = "/all")
+    public ResponseEntity<ApiResponse<PageStudentResponse>> getPage(@ParameterObject GetPageStudentRequest request) {
+        log.info("Has request get page student with data: {}", request.toString());
+        ApiResponse<PageStudentResponse> response = studentService.getPage(request);
+        log.info("Has response get page student with data: {}", response.toString());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 
     @GetMapping(value = "/{id}")

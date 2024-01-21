@@ -40,23 +40,23 @@ public class StudentService {
         return new ApiResponse<StudentResponse>().ok(new StudentResponse(studentSave));
     }
 
-// lay danh sach
-//    public ApiResponse<PageStudentResponse> getPage(GetPageStudentRequest request) {
-//
-//        String keyword = "%" + request.getKeyword() + "%";
-//
-//        Page<Student> studentPage = studentRepository.searchStudent(keyword, request.getPageable());
-//        PageStudentResponse pageStudentResponse = new PageStudentResponse();
-//        pageStudentResponse.setPageNumber(studentPage.getNumber());
-//        pageStudentResponse.setPageSize(studentPage.getSize());
-//        List<StudentResponse> studentResponseList = new ArrayList<>();
-//        for (Student student : studentPage.get().toList()) {
-//            studentResponseList.add(new StudentResponse(student));
-//        }
-//        pageStudentResponse.setResponseList(studentResponseList);
-//        return new ApiResponse<>().ok(pageStudentResponse);
-//
-//    }
+ //lay danh sach
+    public ApiResponse<PageStudentResponse> getPage(GetPageStudentRequest request) {
+
+        String keyword = "%" + request.getKeyword() + "%";
+
+        Page<Student> studentPage = studentRepository.searchStudent(keyword, request.getPageable());
+        PageStudentResponse pageStudentResponse = new PageStudentResponse();
+        pageStudentResponse.setPageNumber(studentPage.getNumber());
+        pageStudentResponse.setPageSize(studentPage.getSize());
+        List<StudentResponse> studentResponseList = new ArrayList<>();
+        for (Student student : studentPage.get().toList()) {
+            studentResponseList.add(new StudentResponse(student));
+        }
+        pageStudentResponse.setResponseList(studentResponseList);
+        return new ApiResponse<>().ok(pageStudentResponse);
+
+    }
 
 
     public ApiResponse<StudentResponse> getDetail(String id) throws BusinessException, NumberFormatException {

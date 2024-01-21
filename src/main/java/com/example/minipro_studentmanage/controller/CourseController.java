@@ -3,15 +3,13 @@ package com.example.minipro_studentmanage.controller;
 
 import com.example.minipro_studentmanage.common.ApiResponse;
 import com.example.minipro_studentmanage.dto.course.request.CreateCourseRequest;
+import com.example.minipro_studentmanage.dto.course.request.GetListCourseRequest;
 import com.example.minipro_studentmanage.dto.course.response.CourseResponse;
-import com.example.minipro_studentmanage.dto.course.response.UpdateCourseRequest;
-import com.example.minipro_studentmanage.dto.student.request.CreateStudentRequest;
-import com.example.minipro_studentmanage.dto.student.response.StudentResponse;
+import com.example.minipro_studentmanage.dto.course.request.UpdateCourseRequest;
 import com.example.minipro_studentmanage.services.CourseService;
-import com.example.minipro_studentmanage.services.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -35,12 +33,12 @@ public class CourseController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/all")
-    public ResponseEntity<ApiResponse<List<CourseResponse>>> getAllCourses() {
-       // log.info("Has request get list course with data: {}", courses.toString());
-        List<CourseResponse> courseList = courseService.getAllCourses();
-        ApiResponse<List<CourseResponse>> response = new ApiResponse<List<CourseResponse>>().ok(courseList);
-        //log.info("Has response get list course with data: {}", response.toString());
+    @GetMapping(value = "/list")
+    public ResponseEntity<ApiResponse<List<CourseResponse>>> getAllCourses(@ParameterObject GetListCourseRequest request) {
+        log.info("Has request get list course with keyword: {}", request.getKeyword());
+        List<CourseResponse> course = courseService.getAllCourses(request);
+        log.info("Has response get list course with data: {}", course.toString());
+        ApiResponse<List<CourseResponse>> response = new ApiResponse<List<CourseResponse>>().ok(course);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

@@ -22,5 +22,8 @@ public class Grade {
     @JoinColumn(name = "course_code", referencedColumnName = "code")
     private Course course;
 
+    @Column(name = "grade")
+    private Double garde;
+
 }
 

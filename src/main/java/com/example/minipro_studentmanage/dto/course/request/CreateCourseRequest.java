@@ -10,9 +10,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CreateCourseRequest {
-    @NotBlank
+    @NotBlank(message = "Code is mandatory")
     private String code;
 
-    @NotBlank
+    @NotBlank(message = "Name is mandatory")
     private String name;
 }

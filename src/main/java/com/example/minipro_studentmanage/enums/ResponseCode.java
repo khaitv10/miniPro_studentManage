@@ -18,6 +18,9 @@ public enum ResponseCode {
     COURSE_CODE_NOT_UNIQUE(30001,"Course code existed in system"),
     COURSE_NOT_FOUND(30004,"Course not found"),
 
+    //
+    GRADE_NOT_FOUND(40004,"Grade not found"),
+
 
 
     ;

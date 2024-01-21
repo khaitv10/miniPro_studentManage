@@ -25,4 +25,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
                             or s.fullName like :keyword )
                     """, nativeQuery = true)
     Page<Student> searchStudent(String keyword, Pageable pageable);
+
 }

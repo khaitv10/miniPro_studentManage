@@ -11,10 +11,10 @@ import lombok.ToString;
 @ToString
 public class CreateStudentRequest {
 
-    @NotBlank
+    @NotBlank(message = "Name is mandatory")
     private String fullname;
-    @NotBlank
+    @NotBlank(message = "Code is mandatory")
     private String code;
-    @NotBlank
+    @NotBlank(message = "Address is mandatory")
     private String address;
 }
